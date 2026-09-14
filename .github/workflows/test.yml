@@ -1,0 +1,24 @@
+
+name: CI
+run-name: ${{ github.actor }} is testing out GitHub Actions
+on:
+  pull_request:
+env:
+  GITHUB_ACTIONS: "true"
+
+jobs:
+  github-task-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: GITHUB_ACTIONS variable
+        run: echo "Value variable GITHUB_ACTIONS is ${{ env.GITHUB_ACTIONS }}"
+        
+      - name: link to repository and branch
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Current branch: ${{ github.ref }}"
+
+      - name: Represent event initiator
+        run: echo "This workflow launched by ${{ github.event_name }}"
